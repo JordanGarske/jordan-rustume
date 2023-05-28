@@ -30,17 +30,6 @@ async fn create_user(user:Json<User>, conn:Db) -> Json<NewUser>{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 #[launch]
 fn rocket() -> _ {
     rocket::build()
