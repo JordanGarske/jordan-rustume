@@ -20,4 +20,7 @@
       </form>
     </mat-card-content>
   </mat-card>
-  {{createdUser}}
+  <div *ngFor="let item of users">
+    {{ item.client_password }}
+    {{ item.first_name }}
+  </div>

@@ -16,9 +16,13 @@ export class SignupComponent {
     admin_privilege: false
   };
   createdUser?:User;
+  users:User[] = [] 
  constructor(private userService: UserService){
  }
  onSubmit() {
    this.userService.addNewUser(this.userData).subscribe(user => this.createdUser = user );
+ }
+ login() {
+  this.userService.getUser().subscribe(users => users  )
  }
 }
