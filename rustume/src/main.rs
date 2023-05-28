@@ -2,7 +2,7 @@
 use diesel::RunQueryDsl;
 use rocket_sync_db_pools::database;
 
-use rocket::{serde::json::Json};
+use rocket::{serde::json::Json, fs::FileServer, fs::relative};
 //models
 mod models;
 use models::{User, NewUser};
@@ -35,5 +35,5 @@ fn rocket() -> _ {
     rocket::build()
     .attach(Db::fairing())
     .mount("/", routes![create_user])
-    
+    .mount("/", FileServer::from(relative!("static")))
 }
