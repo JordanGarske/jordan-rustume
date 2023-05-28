@@ -34,6 +34,6 @@ async fn create_user(user:Json<User>, conn:Db) -> Json<NewUser>{
 fn rocket() -> _ {
     rocket::build()
     .attach(Db::fairing())
-    .mount("/", routes![])
+    .mount("/", routes![create_user])
     
 }
