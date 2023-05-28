@@ -1,5 +1,5 @@
 #[macro_use] extern crate rocket;
-use diesel::RunQueryDsl;
+use diesel::{RunQueryDsl, QueryDsl};
 use rocket_sync_db_pools::database;
 
 use rocket::{serde::json::Json, fs::FileServer, fs::relative};
@@ -26,7 +26,12 @@ async fn create_user(user:Json<User>, conn:Db) -> Json<NewUser>{
         diesel::insert_into(client::table).values(new_user).get_result::<NewUser>(c)
     }).await.map(Json).expect("the information was not valid")
     }
-
+#[get("/login")]
+async fn login_user( conn:Db) -> Json<Vec<NewUser>>{
+    conn.run(move |c| {
+        client::table::load::<NewUser>(client::table,c)
+    }).await.map(Json).expect("fail")
+}
 
 
 
@@ -34,6 +39,6 @@ async fn create_user(user:Json<User>, conn:Db) -> Json<NewUser>{
 fn rocket() -> _ {
     rocket::build()
     .attach(Db::fairing())
-    .mount("/", routes![create_user])
+    .mount("/", routes![create_user,login_user])
     .mount("/", FileServer::from(relative!("static")))
 }
