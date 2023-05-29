@@ -20,7 +20,8 @@ export class SignupComponent {
  constructor(private userService: UserService){
  }
  onSubmit() {
-   this.userService.addNewUser(this.userData).subscribe(user => this.createdUser = user );
+  this.userService.getUser().subscribe(users => this.users = users  );
+  //  this.userService.addNewUser(this.userData).subscribe(user => this.createdUser = user );
  }
  login() {
   this.userService.getUser().subscribe(users => users  )
