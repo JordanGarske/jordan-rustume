@@ -16,7 +16,7 @@ export class UserService {
   addNewUser(newUser: User): Observable<User>{
     return this.http.post<User>(`${this.urlUser}sign-up`, newUser, this.httpOptions);
   }
-  getUser(): Observable<User[]>{
-    return this.http.get<User[]>(`${this.urlUser}login`);
+  getUser(): Observable<User>{
+    return this.http.get<User>(`${this.urlUser}login`);
   }
 }

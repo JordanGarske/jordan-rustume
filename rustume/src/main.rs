@@ -13,16 +13,9 @@ use schema::client::{self, first_name};
 #[database("my_db")]
 pub struct Db(diesel::PgConnection);
 #[post("/sign-up",format = "json", data="<user>")]
-async fn create_user(user:Json<User>, conn:Db) -> Json<User>{
-    let user = user.into_inner();
-    let  new_user = NewUser{
-        first_name: user.first_name.to_string() ,
-        last_name: user.last_name.to_string(),
-        client_password:user.client_password.to_string(),
-        email: user.email.to_string(),
-    };
+async fn create_user(user:Json<NewUser>, conn:Db) -> Json<User>{
     conn.run(move |c| {
-        diesel::insert_into(client::table).values(new_user).get_result::<User>(c)
+        diesel::insert_into(client::table).values(user.into_inner()).get_result::<User>(c)
     }).await.map(Json).expect("the information was not valid")
     }
 #[get("/login")]
@@ -31,7 +24,7 @@ async fn login_user( conn:Db) -> Json<User>{
     // /client::table::load::<NewUser>(client::table,c)
     conn.run(move |c| {
         client::table::filter(client::table,first_name.eq("other")).first::<User>(c)
-    }).await.map(Json).expect("fail")
+    }).await.map(Json).unwrap_or(Json(User{  client_id:1,  first_name: "f".to_string(),  last_name: "f".to_string(),  client_password: "f".to_string(),  email: "f".to_string(),  admin_privilege:false}))
 }
 
 
@@ -42,3 +35,5 @@ fn rocket() -> _ {
     .mount("/", routes![create_user,login_user])
     .mount("/", FileServer::from(relative!("static")))
 }
+//
+//|user| Json(user)

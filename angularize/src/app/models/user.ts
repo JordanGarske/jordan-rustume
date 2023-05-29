@@ -6,7 +6,7 @@ export interface User {
     email: string;
     admin_privilege: boolean;
   }
-export interface User {
+export interface NewUser {
     client_id: number;
     first_name: string;
     last_name: string;

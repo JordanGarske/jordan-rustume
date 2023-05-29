@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from 'src/app/models/user';
+import { User, NewUser } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-signup',
@@ -7,16 +7,22 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
-  userData: User= {
+  userData: NewUser= {
     client_id: 1,
     first_name: '',
     last_name: '',
     client_password: '',
     email: '',
-    admin_privilege: false
   };
   createdUser?:User;
-  users:User[] = [] 
+  users:User = {
+    client_id: 1,
+    first_name: '',
+    last_name: '',
+    client_password: '',
+    email: '',
+    admin_privilege: true
+  };
  constructor(private userService: UserService){
  }
  onSubmit() {
