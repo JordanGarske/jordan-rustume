@@ -13,4 +13,8 @@ export interface NewUser {
     client_password: string;
     email: string;
   }
+  export interface UserLoginInfo {
+    client_password: string;
+    email: string;
+  }
   

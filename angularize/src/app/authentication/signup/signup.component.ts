@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import { User, NewUser } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 @Component({
@@ -7,6 +8,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
+  create:string = ""; 
   userData: NewUser= {
     client_id: 1,
     first_name: '',
@@ -23,13 +25,20 @@ export class SignupComponent {
     email: '',
     admin_privilege: true
   };
- constructor(private userService: UserService){
+ constructor(private userService: UserService, private location: Location){
  }
  onSubmit() {
-  this.userService.getUser().subscribe(users => this.users = users  );
+  this.userService.addNewUser(this.userData).subscribe(isUserCreated => {
+    if(isUserCreated){
+        this.location.back();
+    }
+    else{
+      this.create = "please try different info "
+    }
+  }  );
   //  this.userService.addNewUser(this.userData).subscribe(user => this.createdUser = user );
  }
  login() {
-  this.userService.getUser().subscribe(users => users  )
+  this.userService.addNewUser
  }
 }
