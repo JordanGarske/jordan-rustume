@@ -11,7 +11,7 @@ pub struct ClientToRoom {
     pub edit_privilege: bool,
     pub write_privilege: bool,
 }
-#[derive( Deserialize, Queryable,Insertable)]
+#[derive( Serialize,Deserialize, Queryable,Insertable)]
 #[diesel(table_name = client_to_room)]
 pub struct NewClientToRoom {
     pub client_id: i32,

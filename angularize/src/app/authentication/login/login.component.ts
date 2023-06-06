@@ -10,16 +10,24 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent {
   valid:string = '';
-  userLogin: any;
+  email?: string;
+  password?: string;
   constructor(private userService: UserService,private router:Router){}
-  onSubmit(){
-    this.userService.loginUser(this.userLogin).subscribe(result =>{
-      if(result){
-        this.router.navigate(["/home"]);
-      }
-      else{
-        this.valid = "failed to login"
-      }
-    })
+  login(){
+    if(this.password && this.email){
+      let user: UserLoginInfo = {client_password: this.password, email: this.email}
+      this.userService.loginUser(user).subscribe(result =>{
+        if(result){
+          this.router.navigate(["/home"]);
+        }
+        else{
+          this.valid = "failed to login"
+        }
+      })
+    }
+    else{
+      this.valid = "enter all data in each field"
+    }
+
   }
 }
