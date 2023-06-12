@@ -14,12 +14,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { SignupComponent } from './authentication/signup/signup.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { HomeComponent } from './home/home.component';
+import { RoomListComponent } from './home/room-list/room-list.component';
+import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    RoomListComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     HttpClientModule,
      MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

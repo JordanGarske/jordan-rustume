@@ -1,6 +1,7 @@
 use crate::schema::client;
-use diesel::{Queryable, Insertable };
+use diesel::{Queryable, Insertable, Identifiable, Selectable };
 use serde::{Serialize, Deserialize};
+
 #[derive( Queryable,Insertable)]
 #[diesel(table_name = client)]
 pub struct User{
@@ -25,4 +26,10 @@ pub struct NewUser{
 pub struct LoginUser{
     pub client_password: String,
     pub email: String
+}
+#[derive(Queryable, Identifiable , Selectable)]
+#[diesel(table_name = client)]
+#[diesel(primary_key(client_id))]
+pub struct Client{
+    pub client_id: i32,  
 }

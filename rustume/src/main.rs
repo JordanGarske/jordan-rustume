@@ -9,6 +9,7 @@ use rocket::http::{Cookie, CookieJar};
 mod authentication;
 //models
 mod models;
+mod user_rooms;
 use models::user::{User};
 // use models::client_to_room::{ClientToRoom,NewClientToRoom};
 //schema
@@ -45,7 +46,6 @@ fn rocket() -> _ {
     .attach(Db::fairing())
     .mount("/admin", routes![activate_admin])
     .mount("/", authentication::routes())
+    .mount("/rooms", user_rooms::routes())
     .mount("/", FileServer::from(relative!("static")))
 }
-//
-//|user| Json(user)
