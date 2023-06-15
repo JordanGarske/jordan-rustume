@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router  } from '@angular/router';
 import { UserLoginInfo } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
@@ -8,11 +8,14 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   valid:string = '';
   email?: string;
   password?: string;
   constructor(private userService: UserService,private router:Router){}
+  ngOnInit(): void {
+     this.userService.setUp().subscribe();
+  }
   login(){
     if(this.password && this.email){
       let user: UserLoginInfo = {client_password: this.password, email: this.email}

@@ -10,7 +10,7 @@ use crate::schema::{room_subject, room};
 use diesel::{BelongingToDsl, SelectableHelper};
 use diesel::prelude::*;
 //-> Json<Room
-#[get("/rooms")]
+#[get("/")]
 async fn rooms( conn:Db, jar: &CookieJar<'_>) -> Json<Vec<Room>>{
     let hold:i32 = jar.get_private("user_id").map( |cookie|  cookie.value().parse().ok()).unwrap().unwrap();
     let user:Client = Client { client_id: hold };
@@ -28,7 +28,7 @@ async fn rooms( conn:Db, jar: &CookieJar<'_>) -> Json<Vec<Room>>{
         }
     }
 }
-#[get("/rooms/<id>")]
+#[get("/<id>")]
 async fn sub_rooms(id: i32 ,  conn:Db, jar: &CookieJar<'_>) -> Json<Vec<RoomSubject>>{
     //let hold:i32 = jar.get_private("user_id").map( |cookie|  cookie.value().parse().ok()).unwrap().unwrap(); 
     let result_rooms: Result<Vec<RoomSubject>, Error> = conn.run(move |c| {

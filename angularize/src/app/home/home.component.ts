@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { Room } from '../models/room';
+import { RoomService } from '../services/room.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,9 @@ import { Room } from '../models/room';
 })
 export class HomeComponent implements OnInit  {
   roomList: Room[] = [];
-  
+  constructor(private roomService: RoomService ){
+  }
   ngOnInit(): void {
-    // Initialization logic goes here
-    // This code will be executed when the component is initialized
+    this.roomService.getUserRoom().subscribe(rooms => this.roomList = rooms)
   }
 }
