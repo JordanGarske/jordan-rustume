@@ -1,0 +1,10 @@
+.room-list-item {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .room-details {
+    flex-grow: 1;
+    overflow-wrap: break-word;
+    margin-left: 16px;
+  }

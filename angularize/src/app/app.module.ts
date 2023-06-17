@@ -34,9 +34,10 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     AppRoutingModule,
     HttpClientModule,
-     MatFormFieldModule,
+    MatFormFieldModule,
     ReactiveFormsModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

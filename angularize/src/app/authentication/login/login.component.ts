@@ -8,28 +8,26 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   valid:string = '';
   email?: string;
   password?: string;
   constructor(private userService: UserService,private router:Router){}
-  ngOnInit(): void {
-     this.userService.setUp().subscribe();
-  }
   login(){
     if(this.password && this.email){
       let user: UserLoginInfo = {client_password: this.password, email: this.email}
-      this.userService.loginUser(user).subscribe(result =>{
-        if(result){
-          this.router.navigate(["/home"]);
-        }
-        else{
-          this.valid = "failed to login"
-        }
-      })
-    }
-    else{
-      this.valid = "enter all data in each field"
+      this.router.navigate(["/home"]);
+    //   this.userService.loginUser(user).subscribe(result =>{
+    //     if(result){
+    //       this.router.navigate(["/home"]);
+    //     }
+    //     else{
+    //       this.valid = "failed to login"
+    //     }
+    //   })
+    // }
+    // else{
+    //   this.valid = "enter all data in each field"
     }
 
   }
