@@ -13,16 +13,19 @@ export class HomeComponent implements OnInit  {
       room_id: 1,
       title: 'Room 1',
       elucidation: 'This is the first room.',
+      write_privilege:true
     },
     {
       room_id: 2,
       title: 'Room 2',
       elucidation: 'This is the second room.',
+      write_privilege:true
     },
     {
       room_id: 3,
       title: 'Room 3',
       elucidation: 'This is the third room.',
+      write_privilege:false
     },
   ];
   constructor(private roomService: RoomService ){

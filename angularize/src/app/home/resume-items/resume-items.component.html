@@ -1,0 +1,23 @@
+<div *ngFor="let section of contactInfo">
+<mat-card *ngIf="contactInfo">
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <p matLine>{{ section.title }}</p>
+        </mat-list-item>
+        <div *ngFor="let parts of section.points">
+        <mat-list-item>
+
+                <p matLine>{{ parts }}</p>
+
+        </mat-list-item>
+    </div>
+        <mat-list-item>
+          <p matLine>{{ section.description }}</p>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

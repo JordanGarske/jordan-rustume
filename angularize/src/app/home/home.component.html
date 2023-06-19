@@ -1,2 +1,20 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Logo</span>
+    <span class="spacer"></span>
+    <button mat-button>Item 1</button>
+    <button mat-button>Item 2</button>
+    <button mat-button>Item 3</button>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-      <app-room-list [rooms]="roomList"></app-room-list>
+      <div fxLayout="row">
+
+        <div fxFlex="70">
+            <app-resume-items></app-resume-items>
+        </div>
+        <div fxFlex="30">
+          <app-room-list [rooms]="roomList"></app-room-list>
+        </div>
+      </div>
+      

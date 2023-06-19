@@ -16,13 +16,19 @@ import { LoginComponent } from './authentication/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RoomListComponent } from './home/room-list/room-list.component';
 import { MatListModule } from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { ResumeItemsComponent } from './home/resume-items/resume-items.component';
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     LoginComponent,
     HomeComponent,
-    RoomListComponent
+    RoomListComponent,
+    ResumeItemsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,11 @@ import { MatListModule } from '@angular/material/list';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule,
+    FlexLayoutModule,
+    MatMenuModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
