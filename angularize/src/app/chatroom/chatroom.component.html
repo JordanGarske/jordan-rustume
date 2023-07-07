@@ -1,0 +1,19 @@
+<div>
+  <div fxFlex="30%">
+    <mat-card> asdfkljkfdsaklj;kjld </mat-card>
+  </div>
+  <div class="container" fxFlex="70%">
+    <div fxFlex="70%" class="chatlog-container">
+      <ul>
+        <mat-card>
+          <li *ngFor="let name of chatlog">
+            <mat-card-content>{{ name }}</mat-card-content>
+          </li>
+        </mat-card>
+      </ul>
+    </div>
+    <div class="message-bar-container">
+      <app-message-bar></app-message-bar>
+    </div>
+  </div>
+</div>

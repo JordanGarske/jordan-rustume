@@ -1,5 +1,4 @@
 #[macro_use] extern crate rocket;
-use diesel::result::Error;
 use diesel::{RunQueryDsl, QueryDsl};
 use rocket_sync_db_pools::database;
 
@@ -10,6 +9,8 @@ mod authentication;
 //models
 mod models;
 mod user_rooms;
+mod charrooms;
+use charrooms::{routes, Message};
 use models::user::{User};
 // use models::client_to_room::{ClientToRoom,NewClientToRoom};
 //schema
@@ -36,7 +37,7 @@ async fn activate_admin(conn:Db, jar: &CookieJar<'_>) -> Json<bool>{
 
 }
 //setup defualt feature for the website
-pub fn create_cookie(jar: &CookieJar<'_>, key: String  , id : String){
+pub fn create_cookie(jar: &CookieJar<'_>, key: String  , id : String ){
     let cookie = Cookie::build(key, id.to_string()).http_only(true).secure(true);
     jar.add_private(cookie.finish());
 }
@@ -50,19 +51,16 @@ pub fn grab_cookie(jar: &CookieJar<'_>) -> i32{
         None=> return -1
     }
 }
-
+use rocket::tokio::sync::broadcast::{channel};
 #[launch]
 fn rocket() -> _ {
     rocket::build()
     .attach(Db::fairing())
+    .manage(channel::<Message>(1024).0)
     .mount("/admin", routes![activate_admin])
     .mount("/", authentication::routes())
     .mount("/rooms", user_rooms::routes())
+    .mount("/chat", routes())
     .mount("/", FileServer::from(relative!("../angularize/dist/angularize")))
 }
-
-
-
-
-
 

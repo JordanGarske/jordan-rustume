@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.chatlog-container {
+  flex-grow: 1;
+}
+
+.message-bar-container {
+  margin-top: auto;
+}

@@ -1,0 +1,16 @@
+.message-bar {
+    display: flex;
+    align-items: center;
+
+  }
+  
+  .message-input {
+    flex-grow: 1;
+  }
+  
+  .submit-button {
+    min-width: 80px;
+    height: 55px;
+    align-self: flex-start;
+  }
+  

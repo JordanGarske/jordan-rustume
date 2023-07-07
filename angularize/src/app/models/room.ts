@@ -5,3 +5,8 @@ export interface Room {
     write_privilege: Boolean,
   }
 
+export interface Message{
+  room: String;
+  username: String;
+  message: String;
+}

@@ -21,6 +21,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ResumeItemsComponent } from './home/resume-items/resume-items.component';
+import { ChatroomComponent } from './chatroom/chatroom.component';
+import { MessageBarComponent } from './chatroom/message-bar/message-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,9 @@ import { ResumeItemsComponent } from './home/resume-items/resume-items.component
     LoginComponent,
     HomeComponent,
     RoomListComponent,
-    ResumeItemsComponent
+    ResumeItemsComponent,
+    ChatroomComponent,
+    MessageBarComponent
   ],
   imports: [
     BrowserModule,
