@@ -8,10 +8,10 @@ export interface ContactInformation {
    {
      title: 'Contact Information',
      points: [
-       'Full Name',
+       'Jordan Garske',
        'Address',
-       'Phone Number',
-       'Email Address',
+       '7017932011',
+       'jordan.garske',
        'LinkedIn Profile (if applicable)',
      ],
    },
@@ -25,15 +25,15 @@ export interface ContactInformation {
      title: 'Education',
      points: [
        'Degree Pursued: Bachelor of Science in Computer Science',
-       'University Name',
-       'Expected Graduation Date',
+       'University of North Dakota',
+       'end of 2024',
        'Relevant coursework (list a few key courses)',
      ],
    },
    {
      title: 'Technical Skills',
      points: [
-       'Programming languages (e.g., Java, Python, C++)',
+       'Programming languages: Java, Rust, ',
        'Web development (HTML, CSS, JavaScript)',
        'Database management (SQL)',
        'Operating systems (Windows, Linux)',
@@ -55,8 +55,8 @@ export interface ContactInformation {
    {
      title: 'Work Experience',
      points: [
-       'List any relevant internships, part-time jobs, or work experience you have in the field of computer science.',
-       'Include the company name, your job title, and the duration of your employment.',
+       'Product Managment Application',
+       'Doosan Bobcat',
        'Briefly describe your responsibilities and accomplishments in each role, emphasizing any technical skills or achievements.',
      ],
    },
@@ -65,13 +65,6 @@ export interface ContactInformation {
      points: [
        'Mention any leadership roles or involvement in computer science clubs, organizations, or relevant extracurricular activities.',
        'Highlight any accomplishments or projects completed during your involvement.',
-     ],
-   },
-   {
-     title: 'Certifications and Training',
-     points: [
-       'Include any certifications or training programs related to computer science or relevant technologies.',
-       'Mention the certification name, issuing organization, and date of completion.',
      ],
    },
    {

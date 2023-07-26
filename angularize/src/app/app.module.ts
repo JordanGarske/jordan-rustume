@@ -23,6 +23,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ResumeItemsComponent } from './home/resume-items/resume-items.component';
 import { ChatroomComponent } from './chatroom/chatroom.component';
 import { MessageBarComponent } from './chatroom/message-bar/message-bar.component';
+import { RoomComponent } from './room/room.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { MessageBarComponent } from './chatroom/message-bar/message-bar.componen
     RoomListComponent,
     ResumeItemsComponent,
     ChatroomComponent,
-    MessageBarComponent
+    MessageBarComponent,
+    RoomComponent
   ],
   imports: [
     BrowserModule,

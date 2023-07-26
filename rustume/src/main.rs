@@ -61,6 +61,7 @@ fn rocket() -> _ {
     .mount("/", authentication::routes())
     .mount("/rooms", user_rooms::routes())
     .mount("/chat", routes())
-    .mount("/", FileServer::from(relative!("../angularize/dist/angularize")))
+    .mount("/", FileServer::from(relative!("static/angularize")))
+    //../angularize/dist/angularize
 }
 

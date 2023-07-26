@@ -3,5 +3,3 @@ target
 node_modules/
 dist/
 static/
-angularize/
-angularize
