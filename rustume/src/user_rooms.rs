@@ -1,7 +1,7 @@
-use lettre::{AsyncSmtpTransport, AsyncTransport, Tokio1Executor};
+// use lettre::{AsyncSmtpTransport, AsyncTransport, Tokio1Executor};
 use rocket::{serde::json::Json, http::CookieJar};
+use crate::models::user::Client;
 use crate::{Db, grab_cookie};
-use crate::models::user::{Client};
 use crate::models::room::Room;
 use crate::models::room_subject::RoomSubject;
 
@@ -49,31 +49,31 @@ pub fn routes() -> Vec<rocket::Route> {
     routes![rooms, sub_rooms]
 }
 
-use lettre::{transport::smtp::authentication::Credentials, Message};
-#[get("/email/<phrase>")]
-async fn email_sender_jordan(phrase:String ) -> Json<bool>{
-   let x: Message =  Message::builder()
-     .to("cool".parse().unwrap())
-    .from("cool".parse().unwrap()).subject("cool")
-    .body(String::from("Be happy!")).unwrap();
-    //config
-    let creds = Credentials::new("smtp_username".to_owned(), "smtp_password".to_owned());
-    // Open a remote connection to the SMTP relay server
-    match AsyncSmtpTransport::<Tokio1Executor>::relay("smtp.gmail.com"){
-        Ok(mail) =>{
-            let mailer = mail.credentials(Credentials::new(
-                "username".to_owned(),
-                "password".to_owned(),
-            )).build();
-            match mailer.send(x).await{
-                Ok(_) => return  Json(false),
-                Err(_) => return Json(true)
-            }            
-        },
-        Err(_) => {
-            println!("message fail");
-            return  Json(false);
-        }
-    }
+// // use lettre::{transport::smtp::authentication::Credentials, Message};
+// #[get("/email/<phrase>")]
+// async fn email_sender_jordan(phrase:String ) -> Json<bool>{
+//    let x: Message =  Message::builder()
+//      .to("cool".parse().unwrap())
+//     .from("cool".parse().unwrap()).subject("cool")
+//     .body(String::from("Be happy!")).unwrap();
+//     //config
+//     let creds = Credentials::new("smtp_username".to_owned(), "smtp_password".to_owned());
+//     // Open a remote connection to the SMTP relay server
+//     match AsyncSmtpTransport::<Tokio1Executor>::relay("smtp.gmail.com"){
+//         Ok(mail) =>{
+//             let mailer = mail.credentials(Credentials::new(
+//                 "username".to_owned(),
+//                 "password".to_owned(),
+//             )).build();
+//             match mailer.send(x).await{
+//                 Ok(_) => return  Json(false),
+//                 Err(_) => return Json(true)
+//             }            
+//         },
+//         Err(_) => {
+//             println!("message fail");
+//             return  Json(false);
+//         }
+//     }
 
-}
+// }
