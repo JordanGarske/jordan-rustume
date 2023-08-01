@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15.3
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    restart: always
+    ports:
+      - "8000:8000" # Change this to the port your Rocket application listens on
+    depends_on:
+      - db

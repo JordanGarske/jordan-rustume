@@ -1,5 +1,4 @@
-target/
+angularize
 target
-node_modules/
-dist/
-static/
+/rustume/target
+/angularize
